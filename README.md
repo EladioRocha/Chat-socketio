@@ -1,47 +1,34 @@
-# Chat-socketio
+# Socket.IO Room Chat
 
-Chat web por salas con Express y Socket.IO. Permite unirse con un nombre, enviar mensajes y actualizar la lista de participantes. Las salas se mantienen en memoria y se pierden al reiniciar el servidor.
+A real-time browser chat built with **Node.js, Express, and Socket.IO**. Users join a named room, exchange messages, and see the participant list update as people connect and disconnect.
 
-## Estructura
+![Chat room demo](examples/result-1.gif)
 
-- [examples](examples)
-- [public](public)
-- [index.html](index.html)
-- [server.js](server.js)
+## Run locally
 
-## Preparación y uso
-
-Abre `http://localhost:3000` en dos ventanas, entra a la misma sala con nombres diferentes y envía un mensaje. Comprueba también la actualización de participantes al cerrar una ventana.
-
-### Raíz del repositorio
-
-Requiere Node.js. Este paquete no fija una versión del runtime; valida compatibilidad con las dependencias antes de actualizarlo.
+Install Node.js and npm. The project does not pin a Node.js version; its dependencies are from an older Express/Socket.IO generation.
 
 ```sh
+git clone https://github.com/EladioRocha/socketio-room-chat.git
+cd socketio-room-chat
 npm ci
-npm run start
+npm start
 ```
 
-Comandos declarados en [package.json](package.json):
+Open **http://localhost:3000** in two browser windows, enter the same room with different usernames, and exchange a message. Close one window to check that the participant list updates.
 
-| Comando | Acción |
+## Project structure
+
+| Path | Purpose |
 | --- | --- |
-| `npm run test` | `echo "Error: no test specified" && exit 1` |
-| `npm run start` | `node server.js` |
+| [server.js](server.js) | Express server, Socket.IO events, and in-memory room state. |
+| [index.html](index.html) | Chat page served at the root URL. |
+| [public/](public/) | Browser JavaScript and styles. |
+| [examples/](examples/) | Demo media. |
 
-El script `test` es un marcador inicial, no una suite de pruebas.
+## Commands and limitations
 
-## Validación y estado
-
-Esta guía se contrastó con el árbol de archivos y los manifiestos del repositorio. No se ha validado una ejecución completa contra servicios externos, bases de datos o hardware. Las versiones y los scripts mostrados describen el código actual; no implican que sus dependencias antiguas sigan siendo compatibles.
-
-## Documentación previa
-
-Se conserva como referencia histórica, incluidas las imágenes y atribuciones originales. Los enlaces a demos y servicios no se han comprobado.
-
-# Simple rooms chat with socket.io
-
-This project are created with HTML, CSS and JS. Back-end is created with **NodeJS**
-
-**Example using simple chat**\
-![GIF using simple rooms chat](https://github.com/EladioRocha/Chat-socketio/blob/main/examples/result-1.gif?raw=true)
+- `npm start` runs `node server.js`.
+- `npm test` is a placeholder that exits with an error; it is not an automated test suite.
+- Rooms and participants are stored in memory and reset when the server restarts.
+- This is a learning project. Authentication, durable message history, and production hardening are not established by this example.
